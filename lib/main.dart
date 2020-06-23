@@ -26,9 +26,10 @@ class _MyHomePageState extends State<MyHomePage> {
 
   int _counter = 120;
   Timer _timer;
-
+  String showtime;
   void startTimer() {
     _counter = 120;
+
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
@@ -36,6 +37,7 @@ class _MyHomePageState extends State<MyHomePage> {
           setState(() {
             _counter--;
             _duration = new Duration(seconds: _counter);
+            showtime = "${_duration.inMinutes} : ${_duration.inSeconds % 60}";
             print("${_duration.inMinutes} : ${_duration.inSeconds % 60} ");
           });
         } else {
@@ -65,7 +67,7 @@ class _MyHomePageState extends State<MyHomePage> {
                         color: Colors.green),
                   ),
             Text(
-              "$_counter",
+              "$showtime",
               style: TextStyle(
                 fontSize: 25,
                 fontWeight: FontWeight.bold,
