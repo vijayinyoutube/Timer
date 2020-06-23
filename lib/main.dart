@@ -22,26 +22,31 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Duration _duration = new Duration(seconds: 10);
+  Duration _duration = new Duration(seconds: (10));
 
-  int _counter = 10;
+  int _counter = (10);
   Timer _timer;
-  String showtime = "10 Seconds Countdown";
+  String showtime = "5 Minutes Countdown";
+  bool _isbuttondisabled = false;
   void startTimer() {
-    _counter = 10;
+    _counter = (10);
 
     _timer = Timer.periodic(
       Duration(seconds: 1),
       (timer) {
         if (_counter > 0) {
           setState(() {
+            _isbuttondisabled = true;
             _counter--;
             _duration = new Duration(seconds: _counter);
-            showtime = "${_duration.inMinutes} : ${_duration.inSeconds % 60}";
-            print("${_duration.inMinutes} : ${_duration.inSeconds % 60} ");
+            showtime = "${_duration.inMinutes}:${_duration.inSeconds % 60}";
+            print("${_duration.inMinutes}:${_duration.inSeconds % 60} ");
           });
         } else {
           _timer.cancel();
+          setState(() {
+            _isbuttondisabled = false;
+          });
         }
       },
     );
@@ -66,7 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             RaisedButton(
-              onPressed: () => startTimer(),
+              onPressed: _isbuttondisabled == false ? startTimer : null,
               child: Text("Start Timer"),
             )
           ],
