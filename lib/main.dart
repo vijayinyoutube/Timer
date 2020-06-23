@@ -22,13 +22,13 @@ class MyHomePage extends StatefulWidget {
 }
 
 class _MyHomePageState extends State<MyHomePage> {
-  Duration _duration = new Duration(seconds: 120);
+  Duration _duration = new Duration(seconds: 10);
 
-  int _counter = 120;
+  int _counter = 10;
   Timer _timer;
-  String showtime;
+  String showtime = "10 Seconds Countdown";
   void startTimer() {
-    _counter = 120;
+    _counter = 10;
 
     _timer = Timer.periodic(
       Duration(seconds: 1),
@@ -57,15 +57,7 @@ class _MyHomePageState extends State<MyHomePage> {
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            _counter > 0
-                ? Text("")
-                : Text(
-                    "Done",
-                    style: TextStyle(
-                        fontSize: 25,
-                        fontWeight: FontWeight.bold,
-                        color: Colors.green),
-                  ),
+            _counter > 0 ? Text("") : callbackfunction(),
             Text(
               "$showtime",
               style: TextStyle(
@@ -79,6 +71,16 @@ class _MyHomePageState extends State<MyHomePage> {
             )
           ],
         ),
+      ),
+    );
+  }
+
+  Widget callbackfunction() {
+    return Center(
+      child: Text(
+        "Timer Completed",
+        style: TextStyle(
+            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.green),
       ),
     );
   }
