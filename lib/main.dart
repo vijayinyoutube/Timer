@@ -71,6 +71,7 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             RaisedButton(
+              elevation: 10,
               onPressed: _isbuttondisabled == false ? startTimer : null,
               child: Text("Start Timer"),
             )
@@ -79,14 +80,14 @@ class _MyHomePageState extends State<MyHomePage> {
       ),
     );
   }
+}
 
-  Widget callbackfunction() {
-    return Center(
-      child: Text(
-        "Timer Completed",
-        style: TextStyle(
-            fontSize: 25, fontWeight: FontWeight.bold, color: Colors.green),
-      ),
-    );
-  }
+Widget callbackfunction() {
+  return Center(
+    child: Text(
+      "Timer Completed",
+      style: TextStyle(
+          fontSize: 25, fontWeight: FontWeight.bold, color: Colors.green),
+    ),
+  );
 }
